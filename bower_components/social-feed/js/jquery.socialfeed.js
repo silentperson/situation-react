@@ -99,6 +99,7 @@ if (typeof Object.create !== 'function') {
 
         function SocialFeedPost(social_network, data) {
             this.content = data;
+
             this.content.social_network = social_network;
             this.content.attachment = (this.content.attachment === undefined) ? '' : this.content.attachment;
             this.content.time_ago = data.dt_create.fromNow();
@@ -107,7 +108,12 @@ if (typeof Object.create !== 'function') {
             this.content.text = Utility.wrapLinks(Utility.shorten(data.message + ' ' + data.description), data.social_network);
             this.content.moderation_passed = (options.moderation) ? options.moderation(this.content) : true;
 
+            if (Feed[social_network].posts.length ==0) 
+                this.content.isfirst = true;
+            else
+                this.content.isfirst = false;
             Feed[social_network].posts.push(this);
+
         }
         SocialFeedPost.prototype = {
             render: function() {
@@ -280,7 +286,7 @@ if (typeof Object.create !== 'function') {
                                 if (element.entities.media && element.entities.media.length > 0) {
                                     var image_url = element.entities.media[0].media_url;
                                     if (image_url) {
-                                        post.attachment = '<img class="attachment" src="' + image_url + '" />';
+                                        post.attachment = '<img class="attachment img-responsive" src="' + image_url + '" />';
                                     }
                                 }
                             }
@@ -340,7 +346,7 @@ if (typeof Object.create !== 'function') {
                         } else if (element.object_id) {
                             image_url = Feed.facebook.graph + element.object_id + '/picture/?type=normal';
                         }
-                        return '<img class="attachment" src="' + image_url + '" />';
+                        return '<img class="attachment img-responsive" src="' + image_url + '" />';
                     },
                     getExternalImageURL: function(image_url, parameter) {
                         image_url = decodeURIComponent(image_url).split(parameter + '=')[1];
@@ -440,7 +446,7 @@ if (typeof Object.create !== 'function') {
                                             }
                                         }
                                     }
-                                    post.attachment = '<img class="attachment" src="' + image + '"/>';
+                                    post.attachment = '<img class="attachment img-responsive" src="' + image + '"/>';
                                 });
                             }
                         }
@@ -526,7 +532,7 @@ if (typeof Object.create !== 'function') {
                         post.description = '';
                         post.link = element.link;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment" src="' + element.images.standard_resolution.url + '' + '" />';
+                            post.attachment = '<img class="attachment img-responsive" src="' + element.images.standard_resolution.url + '' + '" />';
                         }
                         return post;
                     }

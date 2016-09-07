@@ -3,7 +3,7 @@
 <head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
-    <title>Situation FB</title>
+    <title>Controlfrog - Meaningful Metrics</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="css/bootstrap.css" rel="stylesheet">
@@ -35,25 +35,19 @@
 	<script>
 		var themeColour = 'black';
 	</script>
-    <script src="js/controlfrog.js"></script>
+    <script src="../../js/controlfrog.js"></script>
 </head>
 <body class="black">
 	
 	<div class="cf-container cf-nav-active">
 
 		<div class="row">
-			<div class="col-sm-6 cf-item" style="height:1000px;">
+			<div class="col-sm-6 cf-item">
 				<header>
 					<p><span></span>Latest Posts</p>
 				</header>
-				<div class="content cf-rss">
-					<div id="cf-rss-5" class="carousel slide" data-ride="carousel" style="height:1000px;">
-						<div class="carousel-inner social-feed-container">							
-						</div>						
-					</div>
-				</div>
-
-				
+				<div class="social-feed-container">
+            	</div>
 			</div> <!-- //end col -->
 			<div class="col-sm-6 cf-item">
 				<div class="row">
@@ -145,8 +139,8 @@
 	$('.social-feed-container').socialfeed({
     // FACEBOOK
     facebook:{
-        accounts: ['@KFCMalaysia'],  //Array: Specify a list of accounts from which to pull wall posts
-        limit: 2,                                   //Integer: max number of posts to load
+        accounts: ['@malaysia.travel'],  //Array: Specify a list of accounts from which to pull wall posts
+        limit: 1,                                   //Integer: max number of posts to load
         access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8'  //String: "APP_ID|APP_SECRET"
     },
     show_media:true,   

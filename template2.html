@@ -1,4 +1,4 @@
-<div class="social-feed-element item {{? it.isfirst}}active{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" style="margin:10px;width:75%;">
+<div class="social-feed-element  {{? !it.moderation_passed}}hidden{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" style="margin:10px;width:45%;display:inline-block;">
     {{=it.attachment}}
     <div class='content'>
         <a class="pull-left" href="{{=it.author_link}}" target="_blank">
