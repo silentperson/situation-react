@@ -25,18 +25,12 @@
     <script src="bower_components/codebird-js/codebird.js"></script>
 	<!-- doT.js for rendering templates -->
 	<script src="bower_components/doT/doT.min.js"></script>	
-	<script src="https://unpkg.com/react@15.3.1/dist/react.js"></script>
-    <script src="https://unpkg.com/react-dom@15.3.1/dist/react-dom.js"></script>
-    <script src="https://unpkg.com/babel-core@5.8.38/browser.min.js"></script>    
-    <script src="https://unpkg.com/remarkable@1.6.2/dist/remarkable.min.js"></script>
-	<script type="text/babel" src="js/react/client.js"></script>
-    
+	    
     <!--[if lt IE 9]>
 		<script src="../../js/respond.min.js"></script>
 		<script src="../../js/excanvas.min.js"></script>
 	<![endif]-->
-    
-    
+       
 	<script>
 		var themeColour = 'black';
 	</script>
@@ -45,98 +39,12 @@
 <body class="black">
 	
 	
-	<div class="cf-container cf-nav-active">
-
-		<div class="row">
-			<div class="col-sm-6" style="height:1000px;">
-				<header style="border-bottom-color:#4f4f4f;text-transform:uppercase;border-bottom:solid 1px;">
-					<p style="margin:5px 0 5px 0; white-space: nowrap;"><span style="background-color:#4f4f4f;display:inline-block;width:5px;height:5px;margin-bottom:2px;margin-right:5px;"></span>Latest Posts</p>
-				</header>
-				<div class="content cf-rss">
-					<div id="cf-rss-5" class="carousel slide" data-ride="carousel" style="height:1000px;margin:auto;">
-						<div class="carousel-inner social-feed-container">							
-						</div>						
-					</div>
-				</div>
-
-				
-			</div> <!-- //end col -->
-			<div class="col-sm-6 cf-item">
-				<div class="row">
-					<div class="col-sm-12">
-						<div class="row">
-							<div class="col-sm-6 cf-item">
-								<header>
-									<p><span></span>Likes</p>
-								</header>
-								<div class="content">
-									<div class="cf-svmc-sparkline">
-										<div class="cf-svmc">
-											<div class="metric">3292</div>
-											<div class="change m-green metric-small">
-												<div class="arrow-up"></div>
-												<span class="large">32<span class="small">.45%</span></span>
-											</div>
-										</div>
-										<div class="cf-sparkline clearfix">
-											<div id="spark-1" class="sparkline"></div>
-											<div class="sparkline-value">
-												<div class="metric-small">0</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div> <!-- //end cf-item -->
-							<div id="app"></div>
-						</div> <!-- //end row -->
-						<div class="row">
-							<div class="col-sm-6 cf-item">
-								<!--
-	Display the time and date
-	For 12hr clock add class 'cf-td-12' to the 'cf-td' div
--->
-
-<header>
-	<p><span></span>Time &amp; date</p>
-</header>
-<div class="content">
-	<div class="cf-td cf-td-12">
-		<div class="cf-td-time metric">12:00</div>
-		<div class="cf-td-dd">
-			<p class="cf-td-day metric-small">Monday</p>
-			<p class="cf-td-date metric-small">1st October, 2013</p>
-		</div>
-	</div>
-</div>
-							</div> <!-- //end cf-item -->
-							<div class="col-sm-6 cf-item">
-								<header>
-									<p><span></span>Line chart</p>
-								</header>
-								<div class="content cf-line" id="cf-line-1">
-									<canvas id="cf-line-1-c" width="0" height="0"></canvas>
-								</div>
-							</div> <!-- //end cf-item -->
-						</div> <!-- //end row -->						
-					</div> <!-- //end col -->
-				</div> <!-- //end row -->
-			</div> <!-- // end cf-item -->
-		</div> <!-- //end row -->
+	<div class="cf-container cf-nav-active">		
+		<div id="app"></div>					
 
 	</div> <!-- //end cf-container -->
 
-	<script src="bower_components/social-feed/js/jquery.socialfeed.js"></script>
-	<script>
-	$('.social-feed-container').socialfeed({
-    // FACEBOOK
-    facebook:{
-        accounts: ['@malaysia.travel'],  //Array: Specify a list of accounts from which to pull wall posts
-        limit: 2,                                   //Integer: max number of posts to load
-        access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8'  //String: "APP_ID|APP_SECRET"
-    },
-    show_media:true,   
-        
-	});
-	</script>
+	<script src="bower_components/social-feed/js/jquery.socialfeed.js"></script>	
+	<script src="js/compiled/bundle.js"></script>
 </body>
 </html>
