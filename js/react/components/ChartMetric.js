@@ -6,7 +6,7 @@ export default class ChartMetric extends React.Component {
     return (
     	<div className="col-sm-6 cf-item">
 			<header>
-				<p><span></span>Comments</p>
+				<p><span></span>{this.props.charttitle}</p>
 			</header>
 			<div className="content">
 				<div className="cf-svmc-sparkline">
@@ -26,8 +26,6 @@ export default class ChartMetric extends React.Component {
 				</div>
 			</div>
 		</div>
-    );
-    	
-
+    );    
   }	
 }

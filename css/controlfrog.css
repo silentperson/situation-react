@@ -113,7 +113,7 @@ a:hover {
 .cf-item .content {
   width: 100%;
   margin: 0 auto;
-  padding: 10px 0;
+  /*padding: 10px 0;*/
   height: 90%;
   position: relative; }
 
@@ -125,7 +125,7 @@ a:hover {
     width: 80%; } }
 /* Metric sizes */
 .metric {
-  font-size: 7em;
+  font-size: 4em;
   line-height: 1; }
 
 .metric-small {
@@ -143,23 +143,23 @@ a:hover {
     font-size: 6em; } }
 @media (min-width: 1200px) {
   .col-sm-6 .col-sm-12 .col-sm-6 .metric {
-    font-size: 7.5em; } }
+    font-size: 4em; } }
 @media (min-width: 1400px) {
   .col-sm-6 .col-sm-12 .col-sm-6 .metric {
-    font-size: 9em; } }
+    font-size: 5em; } }
 @media (min-width: 1600px) {
   .col-sm-6 .col-sm-12 .col-sm-6 .metric {
-    font-size: 10.5em; }
+    font-size: 4em; }
   .col-sm-6 .col-sm-12 .col-sm-6 .metric-small {
-    font-size: 2em; } }
+    font-size: 0.4em; } }
 @media (min-width: 1800px) {
   .col-sm-6 .col-sm-12 .col-sm-6 .metric {
-    font-size: 12em; } }
+    font-size: 4em; } }
 @media (min-width: 2000px) {
   .col-sm-6 .col-sm-12 .col-sm-6 .metric {
     font-size: 13.5em; }
   .col-sm-6 .col-sm-12 .col-sm-6 .metric-small {
-    font-size: 3em; } }
+    font-size: 1em; } }
 
 @media (min-width: 768px) {
   .col-sm-6 .metric {
@@ -517,7 +517,7 @@ body.white {
   .col-sm-6 .change .arrow-down {
     border-width: 62.4px 36px 0 36px; }
   .col-sm-6 .change.metric-small {
-    font-size: 6.5em; }
+    font-size: 1.5em; }
 
   .col-sm-6 .col-sm-4 .change .arrow-up {
     border-width: 0 11px 19.1px 11px; }
@@ -527,11 +527,11 @@ body.white {
     font-size: 2em; }
 
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-up {
-    border-width: 0 20px 34.6px 20px; }
+    border-width: 0 5px 8.7px 5px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-down {
     border-width: 34.6px 20px 0 20px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change.metric-small {
-    font-size: 3.5em; }
+    font-size: 1.5em; }
 
   .col-sm-3 .change.metric-small {
     font-size: 3.5em; }
@@ -545,21 +545,21 @@ body.white {
   .col-sm-6 .change .arrow-down {
     border-width: 72.7px 42px 0 42px; }
   .col-sm-6 .change.metric-small {
-    font-size: 7.5em; }
+    font-size: 1.5em; }
 
   .col-sm-6 .col-sm-4 .change .arrow-up {
     border-width: 0 14px 24.2px 14px; }
   .col-sm-6 .col-sm-4 .change .arrow-down {
     border-width: 24.2px 14px 0 14px; }
   .col-sm-6 .col-sm-4 .change.metric-small {
-    font-size: 2.5em; }
+    font-size: 1.5em; }
 
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-up {
-    border-width: 0 23px 39.8px 23px; }
+    border-width: 0 14px 24.2px 14px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-down {
     border-width: 39.8px 23px 0 23px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change.metric-small {
-    font-size: 4em; }
+    font-size: 1.5em; }
 
   .col-sm-3 .change.metric-small {
     font-size: 4em; }

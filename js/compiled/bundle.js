@@ -61,6 +61,10 @@
 	
 	var _ChartMetric2 = _interopRequireDefault(_ChartMetric);
 	
+	var _NoChartMetric = __webpack_require__(/*! ./components/NoChartMetric */ 176);
+	
+	var _NoChartMetric2 = _interopRequireDefault(_NoChartMetric);
+	
 	var _TimeMetric = __webpack_require__(/*! ./components/TimeMetric */ 173);
 	
 	var _TimeMetric2 = _interopRequireDefault(_TimeMetric);
@@ -108,15 +112,15 @@
 								{ className: 'col-sm-12' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'row' },
-									_react2.default.createElement(_ChartMetric2.default, { compid: 1 }),
-									_react2.default.createElement(_ChartMetric2.default, { compid: 2 })
+									{ className: 'row', style: { paddingBottom: 20 } },
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 1, charttitle: 'FACEBOOK' }),
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 2, charttitle: 'TWITTER' })
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'row' },
-									_react2.default.createElement(_TimeMetric2.default, null),
-									_react2.default.createElement(_LineMetric2.default, null)
+									{ className: 'row', style: { paddingBottom: 20 } },
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 3, charttitle: 'INSTAGRAM' }),
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 4, charttitle: 'YOUTUBE' })
 								)
 							)
 						)
@@ -22065,7 +22069,7 @@
 							'p',
 							null,
 							_react2.default.createElement('span', null),
-							'Comments'
+							this.props.charttitle
 						)
 					),
 					_react2.default.createElement(
@@ -22389,6 +22393,176 @@
 	}(_react2.default.Component);
 	
 	exports.default = SocialFeed;
+
+/***/ },
+/* 176 */
+/*!**********************************************!*\
+  !*** ./js/react/components/NoChartMetric.js ***!
+  \**********************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 34);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var NoChartMetric = function (_React$Component) {
+		_inherits(NoChartMetric, _React$Component);
+	
+		function NoChartMetric() {
+			_classCallCheck(this, NoChartMetric);
+	
+			return _possibleConstructorReturn(this, (NoChartMetric.__proto__ || Object.getPrototypeOf(NoChartMetric)).apply(this, arguments));
+		}
+	
+		_createClass(NoChartMetric, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'div',
+					{ className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
+					_react2.default.createElement(
+						'header',
+						null,
+						_react2.default.createElement(
+							'p',
+							null,
+							_react2.default.createElement('span', null),
+							this.props.charttitle
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'content' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'cf-svmc-sparkline' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'cf-svmc' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-sm-12' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Likes'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'metric' },
+											'1,403,500'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
+											_react2.default.createElement('div', { className: 'arrow-up' }),
+											_react2.default.createElement(
+												'span',
+												{ className: 'large' },
+												'32',
+												_react2.default.createElement(
+													'span',
+													{ className: 'small' },
+													'.45%'
+												)
+											)
+										)
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-sm-12' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Comments'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'metric' },
+											'3333'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
+											_react2.default.createElement('div', { className: 'arrow-up' }),
+											_react2.default.createElement(
+												'span',
+												{ className: 'large' },
+												'32',
+												_react2.default.createElement(
+													'span',
+													{ className: 'small' },
+													'.45%'
+												)
+											)
+										)
+									)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'col-sm-6' },
+										_react2.default.createElement(
+											'h3',
+											null,
+											'Shares'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'metric' },
+											'3333'
+										),
+										_react2.default.createElement(
+											'div',
+											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
+											_react2.default.createElement('div', { className: 'arrow-up' }),
+											_react2.default.createElement(
+												'span',
+												{ className: 'large' },
+												'32',
+												_react2.default.createElement(
+													'span',
+													{ className: 'small' },
+													'.45%'
+												)
+											)
+										)
+									)
+								)
+							)
+						)
+					)
+				);
+			}
+		}]);
+	
+		return NoChartMetric;
+	}(_react2.default.Component);
+	
+	exports.default = NoChartMetric;
 
 /***/ }
 /******/ ]);
