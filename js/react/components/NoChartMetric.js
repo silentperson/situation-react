@@ -11,9 +11,10 @@ export default class NoChartMetric extends React.Component {
 			<div className="content">
 				<div className="cf-svmc-sparkline">
 					<div className="cf-svmc">
-						<div className="row">
+						<img src={"img/"+this.props.charttitle+".svg"} className="hidden-xs hidden-sm img-responsive img-logo" width="80px" height="80px"/>
+						<div className="row">						
 							<div className="col-sm-12">
-								<h3>Likes</h3>
+								<h3 style={{marginTop:10}}>Likes</h3>
 								<div className="metric">1,403,500</div>						
 								<div className="change m-green metric-small" style={{display:'inline-block'}}>							
 									<div className="arrow-up"></div>

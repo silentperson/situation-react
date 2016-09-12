@@ -14,13 +14,13 @@ class SituationApp extends React.Component {
 			<div className="col-sm-6 cf-item">
 				<div className="row">					
 			    	<div className="col-sm-12">
-				    	<div className="row" style={{paddingBottom:20}}>
-					    	<NoChartMetric compid={1} charttitle="FACEBOOK"/>
-					    	<NoChartMetric compid={2} charttitle="TWITTER"/>
+				    	<div className="row padding-down" >
+					    	<NoChartMetric compid={1} charttitle="facebook"/>
+					    	<NoChartMetric compid={2} charttitle="twitter"/>
 					    </div>
-					    <div className="row"  style={{paddingBottom:20}}>
-					    	<NoChartMetric compid={3} charttitle="INSTAGRAM"/>
-					    	<NoChartMetric compid={4} charttitle="YOUTUBE"/>
+					    <div className="row padding-down" >
+					    	<NoChartMetric compid={3} charttitle="instagram"/>
+					    	<NoChartMetric compid={4} charttitle="youtube"/>
 					    </div>
 					</div>
 				</div> 
