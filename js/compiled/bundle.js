@@ -22137,7 +22137,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22157,143 +22157,148 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var NoChartMetric = function (_React$Component) {
-		_inherits(NoChartMetric, _React$Component);
+	  _inherits(NoChartMetric, _React$Component);
 	
-		function NoChartMetric() {
-			_classCallCheck(this, NoChartMetric);
+	  function NoChartMetric() {
+	    _classCallCheck(this, NoChartMetric);
 	
-			return _possibleConstructorReturn(this, (NoChartMetric.__proto__ || Object.getPrototypeOf(NoChartMetric)).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, (NoChartMetric.__proto__ || Object.getPrototypeOf(NoChartMetric)).apply(this, arguments));
+	  }
 	
-		_createClass(NoChartMetric, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
-					_react2.default.createElement(
-						'header',
-						null,
-						_react2.default.createElement(
-							'p',
-							null,
-							_react2.default.createElement('span', null),
-							this.props.charttitle
-						)
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'content' },
-						_react2.default.createElement(
-							'div',
-							{ className: 'cf-svmc-sparkline' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'cf-svmc' },
-								_react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px' }),
-								_react2.default.createElement(
-									'div',
-									{ className: 'row' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-sm-12' },
-										_react2.default.createElement(
-											'h3',
-											{ style: { marginTop: 10 } },
-											'Likes'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'metric' },
-											'1,403,500'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
-											_react2.default.createElement('div', { className: 'arrow-up' }),
-											_react2.default.createElement(
-												'span',
-												{ className: 'large' },
-												'32',
-												_react2.default.createElement(
-													'span',
-													{ className: 'small' },
-													'.45%'
-												)
-											)
-										)
-									),
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-sm-12' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Comments'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'metric' },
-											'3333'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
-											_react2.default.createElement('div', { className: 'arrow-up' }),
-											_react2.default.createElement(
-												'span',
-												{ className: 'large' },
-												'32',
-												_react2.default.createElement(
-													'span',
-													{ className: 'small' },
-													'.45%'
-												)
-											)
-										)
-									)
-								),
-								_react2.default.createElement(
-									'div',
-									{ className: 'row' },
-									_react2.default.createElement(
-										'div',
-										{ className: 'col-sm-6' },
-										_react2.default.createElement(
-											'h3',
-											null,
-											'Shares'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'metric' },
-											'3333'
-										),
-										_react2.default.createElement(
-											'div',
-											{ className: 'change m-green metric-small', style: { display: 'inline-block' } },
-											_react2.default.createElement('div', { className: 'arrow-up' }),
-											_react2.default.createElement(
-												'span',
-												{ className: 'large' },
-												'32',
-												_react2.default.createElement(
-													'span',
-													{ className: 'small' },
-													'.45%'
-												)
-											)
-										)
-									)
-								)
-							)
-						)
-					)
-				);
-			}
-		}]);
+	  _createClass(NoChartMetric, [{
+	    key: 'addCommas',
+	    value: function addCommas(nStr) {
+	      nStr += '';
+	      var x = nStr.split('.');
+	      var x1 = x[0];
+	      var x2 = x.length > 1 ? '.' + x[1] : '';
+	      var rgx = /(\d+)(\d{3})/;
+	      while (rgx.test(x1)) {
+	        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	      }
+	      return x1 + x2;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var numrows = 3;
+	      var rows = [];
+	      var itemslist = [];
 	
-		return NoChartMetric;
+	      switch (this.props.charttitle) {
+	        case "facebook":
+	          itemslist = [{
+	            name: "Likes",
+	            value: 1500000
+	          }, {
+	            name: "Posts",
+	            value: 560
+	          }, {
+	            name: "Comments",
+	            value: 4500
+	          }];
+	          break;
+	        case "twitter":
+	          itemslist = [{
+	            name: "Tweets",
+	            value: 300000
+	          }, {
+	            name: "Retweets",
+	            value: 500
+	          }];
+	          break;
+	        case "youtube":
+	          itemslist = [{
+	            name: "Views",
+	            value: 45000000
+	          }, {
+	            name: "Subscribers",
+	            value: 567
+	          }];
+	          break;
+	        case "instagram":
+	          itemslist = [{
+	            name: "Content",
+	            value: 5678
+	          }, {
+	            name: "Likes",
+	            value: 250000
+	          }, {
+	            name: "Comments",
+	            value: 4568
+	          }];
+	          break;
+	
+	      }
+	
+	      for (var i = 0; i < itemslist.length; i++) {
+	        rows.push(_react2.default.createElement(
+	          'div',
+	          { className: 'col-sm-12' },
+	          _react2.default.createElement(
+	            'h3',
+	            { style: { marginTop: 10 } },
+	            itemslist[i].name
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'metric' },
+	            this.addCommas(itemslist[i].value)
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'change m-green metric-small', style: { display: 'inline-block' } },
+	            _react2.default.createElement('div', { className: 'arrow-up' }),
+	            _react2.default.createElement(
+	              'span',
+	              { className: 'large' },
+	              '32',
+	              _react2.default.createElement(
+	                'span',
+	                { className: 'small' },
+	                '.45%'
+	              )
+	            )
+	          )
+	        ));
+	      }
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
+	        _react2.default.createElement(
+	          'header',
+	          null,
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            _react2.default.createElement('span', null),
+	            this.props.charttitle
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'content' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'cf-svmc-sparkline' },
+	            _react2.default.createElement(
+	              'div',
+	              { className: 'cf-svmc' },
+	              _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px' }),
+	              _react2.default.createElement(
+	                'div',
+	                { className: 'row' },
+	                rows
+	              )
+	            )
+	          )
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return NoChartMetric;
 	}(_react2.default.Component);
 	
 	exports.default = NoChartMetric;
