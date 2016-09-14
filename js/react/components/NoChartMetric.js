@@ -18,7 +18,13 @@ export default class NoChartMetric extends React.Component {
    render () {
    	var numrows=3;
    	var rows = [];
-   	var itemslist = [];
+   	var itemslist = this.props.jsondata;
+      console.log(itemslist);
+
+      for (var key in itemslist)
+      {
+         console.log(key);
+      }
 
    	switch(this.props.charttitle)
    	{
@@ -85,7 +91,7 @@ export default class NoChartMetric extends React.Component {
 
 	for (var i=0; i < itemslist.length; i++) {
 	    rows.push(
-	    	<div className="col-sm-12">
+	    	<div className="col-sm-12" key={'mykey'+i}>
 				<h3 style={{marginTop:10}}>{itemslist[i].name}</h3>
 				<div className="metric">{this.addCommas(itemslist[i].value)}</div>						
 				<div className="change m-green metric-small" style={{display:'inline-block'}}>							

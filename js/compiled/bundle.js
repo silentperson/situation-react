@@ -91,10 +91,32 @@
 		function SituationApp() {
 			_classCallCheck(this, SituationApp);
 	
-			return _possibleConstructorReturn(this, (SituationApp.__proto__ || Object.getPrototypeOf(SituationApp)).apply(this, arguments));
+			var _this = _possibleConstructorReturn(this, (SituationApp.__proto__ || Object.getPrototypeOf(SituationApp)).call(this));
+	
+			_this.state = {
+				items: [],
+				url: 'http://madlabsalpha.tk/social/api/getYearDiff'
+			};
+			return _this;
 		}
 	
 		_createClass(SituationApp, [{
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				$.ajax({
+					url: this.state.url,
+					dataType: 'json',
+					cache: false,
+					success: function (data) {
+						console.log("success");
+						this.setState({ items: data });
+					}.bind(this),
+					error: function (xhr, status, err) {
+						console.error(this.props.url, status, err.toString());
+					}.bind(this)
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -113,14 +135,14 @@
 								_react2.default.createElement(
 									'div',
 									{ className: 'row padding-down' },
-									_react2.default.createElement(_NoChartMetric2.default, { compid: 1, charttitle: 'facebook' }),
-									_react2.default.createElement(_NoChartMetric2.default, { compid: 2, charttitle: 'twitter' })
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 1, charttitle: 'facebook', jsondata: this.state.items }),
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 2, charttitle: 'twitter', jsondata: this.state.items })
 								),
 								_react2.default.createElement(
 									'div',
 									{ className: 'row padding-down' },
-									_react2.default.createElement(_NoChartMetric2.default, { compid: 3, charttitle: 'instagram' }),
-									_react2.default.createElement(_NoChartMetric2.default, { compid: 4, charttitle: 'youtube' })
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 3, charttitle: 'instagram', jsondata: this.state.items }),
+									_react2.default.createElement(_NoChartMetric2.default, { compid: 4, charttitle: 'youtube', jsondata: this.state.items })
 								)
 							)
 						)
@@ -22183,7 +22205,12 @@
 	    value: function render() {
 	      var numrows = 3;
 	      var rows = [];
-	      var itemslist = [];
+	      var itemslist = this.props.jsondata;
+	      console.log(itemslist);
+	
+	      for (var key in itemslist) {
+	        console.log(key);
+	      }
 	
 	      switch (this.props.charttitle) {
 	        case "facebook":
@@ -22234,7 +22261,7 @@
 	      for (var i = 0; i < itemslist.length; i++) {
 	        rows.push(_react2.default.createElement(
 	          'div',
-	          { className: 'col-sm-12' },
+	          { className: 'col-sm-12', key: 'mykey' + i },
 	          _react2.default.createElement(
 	            'h3',
 	            { style: { marginTop: 10 } },
