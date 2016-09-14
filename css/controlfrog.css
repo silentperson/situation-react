@@ -15,12 +15,12 @@ a:hover {
 }
 
 .padding-down {
-  padding-bottom:120px;
+  padding-bottom:180px;
 }
 
 @media (min-width: 1600px) {
    .padding-down {
-    padding-bottom:20px;
+    padding-bottom:90px;
   }  
 }
 
@@ -546,7 +546,7 @@ body.white {
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-up {
     border-width: 0 5px 8.7px 5px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-down {
-    border-width: 34.6px 20px 0 20px; }
+    border-width: 8.7px 5px 0 5px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change.metric-small {
     font-size: 1.5em; }
 
@@ -574,7 +574,7 @@ body.white {
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-up {
     border-width: 0 14px 24.2px 14px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change .arrow-down {
-    border-width: 39.8px 23px 0 23px; }
+    border-width: 24.2px 14px 0 14px; }
   .col-sm-6 .col-sm-12 .col-sm-6 .change.metric-small {
     font-size: 1.5em; }
 

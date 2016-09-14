@@ -10,24 +10,42 @@ class SituationApp extends React.Component {
 	constructor() {
 		super();
 		this.state = {
-			items : [],
-			url : 'http://madlabsalpha.tk/social/api/getYearDiff'
+			items : false,
+			url : 'http://madlabsalpha.tk/social/api/getYearDiff?territory=Tourism%20Malaysia'
 		};
 	}
 
 	componentDidMount() {
+
 		$.ajax({
-	      url: this.state.url,
-	      dataType: 'json',
-	      cache: false,
-	      success: function(data) {
-	      	console.log("success");
-	        this.setState({items: data});
-	      }.bind(this),
-	      error: function(xhr, status, err) {
-	        console.error(this.props.url, status, err.toString());
-	      }.bind(this)
-	    });
+		      url: this.state.url,
+		      dataType: 'json',
+		      cache: false,
+		      success: function(data) {
+		      	console.log("success");
+		        this.setState({items: data});
+		      }.bind(this),
+		      error: function(xhr, status, err) {
+		        console.error(this.props.url, status, err.toString());
+		      }.bind(this)
+	      });
+		setTimeout(
+			function()
+			{
+				$.ajax({
+			      url: this.state.url,
+			      dataType: 'json',
+			      cache: false,
+			      success: function(data) {
+			      	console.log("success");
+			        this.setState({items: data});
+			      }.bind(this),
+			      error: function(xhr, status, err) {
+			        console.error(this.props.url, status, err.toString());
+			      }.bind(this)
+		      });
+		     }.bind(this)
+	    , 5000);
 	}
 
 	render () {

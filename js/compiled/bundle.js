@@ -94,8 +94,8 @@
 			var _this = _possibleConstructorReturn(this, (SituationApp.__proto__ || Object.getPrototypeOf(SituationApp)).call(this));
 	
 			_this.state = {
-				items: [],
-				url: 'http://madlabsalpha.tk/social/api/getYearDiff'
+				items: false,
+				url: 'http://madlabsalpha.tk/social/api/getYearDiff?territory=Tourism%20Malaysia'
 			};
 			return _this;
 		}
@@ -103,6 +103,7 @@
 		_createClass(SituationApp, [{
 			key: 'componentDidMount',
 			value: function componentDidMount() {
+	
 				$.ajax({
 					url: this.state.url,
 					dataType: 'json',
@@ -115,6 +116,20 @@
 						console.error(this.props.url, status, err.toString());
 					}.bind(this)
 				});
+				setTimeout(function () {
+					$.ajax({
+						url: this.state.url,
+						dataType: 'json',
+						cache: false,
+						success: function (data) {
+							console.log("success");
+							this.setState({ items: data });
+						}.bind(this),
+						error: function (xhr, status, err) {
+							console.error(this.props.url, status, err.toString());
+						}.bind(this)
+					});
+				}.bind(this), 5000);
 			}
 		}, {
 			key: 'render',
@@ -22159,7 +22174,7 @@
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	   value: true
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -22179,153 +22194,233 @@
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var NoChartMetric = function (_React$Component) {
-	  _inherits(NoChartMetric, _React$Component);
+	   _inherits(NoChartMetric, _React$Component);
 	
-	  function NoChartMetric() {
-	    _classCallCheck(this, NoChartMetric);
+	   function NoChartMetric() {
+	      _classCallCheck(this, NoChartMetric);
 	
-	    return _possibleConstructorReturn(this, (NoChartMetric.__proto__ || Object.getPrototypeOf(NoChartMetric)).apply(this, arguments));
-	  }
+	      return _possibleConstructorReturn(this, (NoChartMetric.__proto__ || Object.getPrototypeOf(NoChartMetric)).apply(this, arguments));
+	   }
 	
-	  _createClass(NoChartMetric, [{
-	    key: 'addCommas',
-	    value: function addCommas(nStr) {
-	      nStr += '';
-	      var x = nStr.split('.');
-	      var x1 = x[0];
-	      var x2 = x.length > 1 ? '.' + x[1] : '';
-	      var rgx = /(\d+)(\d{3})/;
-	      while (rgx.test(x1)) {
-	        x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	   _createClass(NoChartMetric, [{
+	      key: 'addCommas',
+	      value: function addCommas(nStr) {
+	         nStr += '';
+	         var x = nStr.split('.');
+	         var x1 = x[0];
+	         var x2 = x.length > 1 ? '.' + x[1] : '';
+	         var rgx = /(\d+)(\d{3})/;
+	         while (rgx.test(x1)) {
+	            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+	         }
+	         return x1 + x2;
 	      }
-	      return x1 + x2;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-	      var numrows = 3;
-	      var rows = [];
-	      var itemslist = this.props.jsondata;
-	      console.log(itemslist);
-	
-	      for (var key in itemslist) {
-	        console.log(key);
+	   }, {
+	      key: 'percentdiff',
+	      value: function percentdiff(item1, item2) {
+	         if (item2 !== undefined) {
+	            return (item1 / item2 * 100).toFixed(2);
+	         }
+	         return 0;
 	      }
+	   }, {
+	      key: 'render',
+	      value: function render() {
+	         var numrows = 3;
+	         var rows = [];
+	         var itemsdata = this.props.jsondata;
+	         var itemslist = [];
 	
-	      switch (this.props.charttitle) {
-	        case "facebook":
-	          itemslist = [{
-	            name: "Likes",
-	            value: 1500000
-	          }, {
-	            name: "Posts",
-	            value: 560
-	          }, {
-	            name: "Comments",
-	            value: 4500
-	          }];
-	          break;
-	        case "twitter":
-	          itemslist = [{
-	            name: "Tweets",
-	            value: 300000
-	          }, {
-	            name: "Retweets",
-	            value: 500
-	          }];
-	          break;
-	        case "youtube":
-	          itemslist = [{
-	            name: "Views",
-	            value: 45000000
-	          }, {
-	            name: "Subscribers",
-	            value: 567
-	          }];
-	          break;
-	        case "instagram":
-	          itemslist = [{
-	            name: "Content",
-	            value: 5678
-	          }, {
-	            name: "Likes",
-	            value: 250000
-	          }, {
-	            name: "Comments",
-	            value: 4568
-	          }];
-	          break;
+	         var d = new Date();
+	         var n = d.getFullYear();
 	
-	      }
+	         switch (this.props.charttitle) {
+	            case "facebook":
+	               if (itemsdata != false) {
+	                  console.log(itemsdata[2015]);
+	                  console.log(itemsdata[2016]);
+	                  for (var i = 0; i < itemsdata[n].length; i++) {
+	                     if (itemsdata[n][i].network == 'facebook') {
+	                        itemslist = [{
+	                           name: "Posts",
+	                           value: itemsdata[n][i].totalposts,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
+	                           previousamt: itemsdata[n - 1][i].totalposts
+	                        }, {
+	                           name: "Likes",
+	                           value: itemsdata[n][i].totallikes,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totallikes, itemsdata[n - 1][i].totallikes),
+	                           previousamt: itemsdata[n - 1][i].totallikes
+	                        }, {
+	                           name: "Comments",
+	                           value: itemsdata[n][i].totalfacebookcomments,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments, itemsdata[n - 1][i].totalfacebookcomments),
+	                           previousamt: itemsdata[n - 1][i].totalfacebookcomments
+	                        }, {
+	                           name: "Shares",
+	                           value: itemsdata[n][i].totalfacebookshares,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookshares, itemsdata[n - 1][i].totalfacebookshares),
+	                           previousamt: itemsdata[n - 1][i].totalfacebookshares
+	                        }];
+	                     }
+	                  }
+	               }
+	               break;
+	            case "twitter":
+	               if (itemsdata != false) {
+	                  for (var i = 0; i < itemsdata[n].length; i++) {
+	                     if (itemsdata[n][i].network == 'twitter') {
+	                        itemslist = [{
+	                           name: "Tweets",
+	                           value: itemsdata[n][i].totalposts,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
+	                           previousamt: itemsdata[n - 1][i].totalposts
+	                        }, {
+	                           name: "Retweets",
+	                           value: itemsdata[n][i].totalretweet,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalretweet, itemsdata[n - 1][i].totalretweet),
+	                           previousamt: itemsdata[n - 1][i].totalretweet
+	                        }];
+	                     }
+	                  }
+	               }
 	
-	      for (var i = 0; i < itemslist.length; i++) {
-	        rows.push(_react2.default.createElement(
-	          'div',
-	          { className: 'col-sm-12', key: 'mykey' + i },
-	          _react2.default.createElement(
-	            'h3',
-	            { style: { marginTop: 10 } },
-	            itemslist[i].name
-	          ),
-	          _react2.default.createElement(
+	               break;
+	            case "youtube":
+	               if (itemsdata != false) {
+	                  for (var i = 0; i < itemsdata[n].length; i++) {
+	                     if (itemsdata[n][i].network == 'youTube') {
+	                        itemslist = [{
+	                           name: "Videos",
+	                           value: itemsdata[n][i].maxstatus,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].maxstatus, itemsdata[n - 1][i].maxstatus),
+	                           previousamt: itemsdata[n - 1][i].maxstatus
+	                        }, {
+	                           name: "Views",
+	                           value: itemsdata[n][i].maxviews,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].maxviews, itemsdata[n - 1][i].maxviews),
+	                           previousamt: itemsdata[n - 1][i].maxviews
+	                        }, {
+	                           name: "Comments",
+	                           value: itemsdata[n][i].maxcomments,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].maxcomments, itemsdata[n - 1][i].maxcomments),
+	                           previousamt: itemsdata[n - 1][i].maxcomments
+	                        }];
+	                     }
+	                  }
+	               }
+	               break;
+	            case "instagram":
+	               if (itemsdata != false) {
+	                  for (var i = 0; i < itemsdata[n].length; i++) {
+	                     if (itemsdata[n][i].network == 'instagram') {
+	                        itemslist = [{
+	                           name: "Posts",
+	                           value: itemsdata[n][i].totalposts,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
+	                           previousamt: itemsdata[n - 1][i].totalposts
+	                        }, {
+	                           name: "Likes",
+	                           value: itemsdata[n][i].totallikes,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totallikes, itemsdata[n - 1][i].totallikes),
+	                           previousamt: itemsdata[n - 1][i].totallikes
+	                        }, {
+	                           name: "Comments",
+	                           value: itemsdata[n][i].totalfacebookcomments,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments, itemsdata[n - 1][i].totalfacebookcomments),
+	                           previousamt: itemsdata[n - 1][i].totalfacebookcomments
+	
+	                        }];
+	                     }
+	                  }
+	               }
+	               break;
+	
+	         }
+	
+	         for (var i = 0; i < itemslist.length; i++) {
+	            if (this.props.charttitle == 'youtube') {
+	               rows.push(_react2.default.createElement(
+	                  'div',
+	                  { className: 'col-sm-12', key: 'mykey' + i },
+	                  _react2.default.createElement(
+	                     'h3',
+	                     { style: { marginTop: 10 } },
+	                     itemslist[i].name
+	                  ),
+	                  _react2.default.createElement(
+	                     'div',
+	                     { className: 'metric' },
+	                     this.addCommas(itemslist[i].value)
+	                  )
+	               ));
+	            } else {
+	               rows.push(_react2.default.createElement(
+	                  'div',
+	                  { className: 'col-sm-12', key: 'mykey' + i },
+	                  _react2.default.createElement(
+	                     'h3',
+	                     { style: { marginTop: 10 } },
+	                     itemslist[i].name
+	                  ),
+	                  _react2.default.createElement(
+	                     'div',
+	                     { className: 'metric' },
+	                     this.addCommas(itemslist[i].value)
+	                  ),
+	                  _react2.default.createElement(
+	                     'div',
+	                     { className: "change m-" + (itemslist[i].percentdiff >= 100 ? 'green' : 'red') + " metric-small", style: { display: 'inline-block' } },
+	                     _react2.default.createElement('div', { className: "arrow-" + (itemslist[i].percentdiff >= 100 ? 'up' : 'down') }),
+	                     _react2.default.createElement(
+	                        'span',
+	                        { className: 'large' },
+	                        itemslist[i].percentdiff,
+	                        '% (',
+	                        this.addCommas(itemslist[i].previousamt),
+	                        ')'
+	                     )
+	                  )
+	               ));
+	            }
+	         }
+	
+	         return _react2.default.createElement(
 	            'div',
-	            { className: 'metric' },
-	            this.addCommas(itemslist[i].value)
-	          ),
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'change m-green metric-small', style: { display: 'inline-block' } },
-	            _react2.default.createElement('div', { className: 'arrow-up' }),
+	            { className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
 	            _react2.default.createElement(
-	              'span',
-	              { className: 'large' },
-	              '32',
-	              _react2.default.createElement(
-	                'span',
-	                { className: 'small' },
-	                '.45%'
-	              )
-	            )
-	          )
-	        ));
-	      }
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
-	        _react2.default.createElement(
-	          'header',
-	          null,
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _react2.default.createElement('span', null),
-	            this.props.charttitle
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'content' },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'cf-svmc-sparkline' },
+	               'header',
+	               null,
+	               _react2.default.createElement(
+	                  'p',
+	                  null,
+	                  _react2.default.createElement('span', null),
+	                  this.props.charttitle
+	               )
+	            ),
 	            _react2.default.createElement(
-	              'div',
-	              { className: 'cf-svmc' },
-	              _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px' }),
-	              _react2.default.createElement(
-	                'div',
-	                { className: 'row' },
-	                rows
-	              )
+	               'div',
+	               { className: 'content' },
+	               _react2.default.createElement(
+	                  'div',
+	                  { className: 'cf-svmc-sparkline' },
+	                  _react2.default.createElement(
+	                     'div',
+	                     { className: 'cf-svmc' },
+	                     _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px' }),
+	                     _react2.default.createElement(
+	                        'div',
+	                        { className: 'row' },
+	                        rows
+	                     )
+	                  )
+	               )
 	            )
-	          )
-	        )
-	      );
-	    }
-	  }]);
+	         );
+	      }
+	   }]);
 	
-	  return NoChartMetric;
+	   return NoChartMetric;
 	}(_react2.default.Component);
 	
 	exports.default = NoChartMetric;

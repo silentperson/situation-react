@@ -15,91 +15,180 @@ export default class NoChartMetric extends React.Component {
 	    return x1 + x2;
 	}
 
+   percentdiff(item1,item2)
+   {
+      if (item2!==undefined)
+      {
+         return (item1/item2*100).toFixed(2);
+      }
+      return 0;
+   }
+
    render () {
    	var numrows=3;
    	var rows = [];
-   	var itemslist = this.props.jsondata;
-      console.log(itemslist);
+   	var itemsdata = this.props.jsondata;
+      var itemslist = [];
 
-      for (var key in itemslist)
-      {
-         console.log(key);
-      }
+      var d = new Date();
+      var n = d.getFullYear();
 
    	switch(this.props.charttitle)
    	{
    		case "facebook":
-   			itemslist = [
-   				{
-   					name:"Likes",
-   					value:1500000
-   				},
-   				{
-   					name:"Posts",
-   					value:560
-   				},
-   				{
-   					name:"Comments",
-   					value:4500
-   				},
-   			];
+            if (itemsdata!=false)
+            {
+               console.log(itemsdata[2015]);
+               console.log(itemsdata[2016]);
+               for (var i=0;i<itemsdata[n].length;i++)               
+               {
+                  if (itemsdata[n][i].network == 'facebook')
+                  {
+                     itemslist = [
+                        {
+                           name:"Posts",
+                           value:itemsdata[n][i].totalposts,
+                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
+                           previousamt: itemsdata[n-1][i].totalposts                        
+                        },
+                        {
+                           name:"Likes",
+                           value:itemsdata[n][i].totallikes,
+                           percentdiff: this.percentdiff(itemsdata[n][i].totallikes,itemsdata[n-1][i].totallikes),
+                           previousamt: itemsdata[n-1][i].totallikes
+                        },
+                        {
+                           name:"Comments",
+                           value:itemsdata[n][i].totalfacebookcomments,
+                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments,itemsdata[n-1][i].totalfacebookcomments),
+                           previousamt: itemsdata[n-1][i].totalfacebookcomments
+                        },
+                        {
+                           name:"Shares",
+                           value:itemsdata[n][i].totalfacebookshares,
+                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookshares,itemsdata[n-1][i].totalfacebookshares),
+                           previousamt: itemsdata[n-1][i].totalfacebookshares
+                        },
+                     ];
+                  }
+               }
+            }   			
    			break;
    		case "twitter":
-   			itemslist = [
-   				{
-   					name:"Tweets",
-   					value:300000
-   				},
-   				{
-   					name:"Retweets",
-   					value:500
-   				},
-   			];
+            if (itemsdata!=false)
+            {
+               for (var i=0;i<itemsdata[n].length;i++)               
+                  {
+                     if (itemsdata[n][i].network == 'twitter')
+                     {
+                        itemslist = [
+                           {
+                              name:"Tweets",
+                              value:itemsdata[n][i].totalposts,
+                              percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
+                              previousamt: itemsdata[n-1][i].totalposts                           
+                           },
+                           {
+                              name:"Retweets",
+                              value:itemsdata[n][i].totalretweet,
+                              percentdiff: this.percentdiff(itemsdata[n][i].totalretweet,itemsdata[n-1][i].totalretweet),
+                              previousamt: itemsdata[n-1][i].totalretweet
+                           },
+                        ];
+                     }
+                  }         
+            }
+   			
    			break;
    		case "youtube":
-   		   	itemslist = [
-   				{
-   					name:"Views",
-   					value:45000000
-   				},
-   				{
-   					name:"Subscribers",
-   					value:567
-   				},
-
-   			];
+            if (itemsdata!=false)
+            {
+               for (var i=0;i<itemsdata[n].length;i++)               
+                  {
+                     if (itemsdata[n][i].network == 'youTube')
+                     {
+                        itemslist = [
+                           {
+                              name:"Videos",
+                              value:itemsdata[n][i].maxstatus,           
+                              percentdiff: this.percentdiff(itemsdata[n][i].maxstatus,itemsdata[n-1][i].maxstatus),
+                              previousamt: itemsdata[n-1][i].maxstatus                                              
+                           },
+                           {
+                              name:"Views",
+                              value:itemsdata[n][i].maxviews,
+                              percentdiff: this.percentdiff(itemsdata[n][i].maxviews,itemsdata[n-1][i].maxviews),
+                              previousamt: itemsdata[n-1][i].maxviews                                              
+                           },
+                           {
+                              name:"Comments",
+                              value:itemsdata[n][i].maxcomments,
+                              percentdiff: this.percentdiff(itemsdata[n][i].maxcomments,itemsdata[n-1][i].maxcomments),
+                              previousamt: itemsdata[n-1][i].maxcomments                                              
+                           },
+                        ];
+                     }
+                  }         
+            }   		   	   			
    			break;
    		case "instagram":
-    		   	itemslist = [
-   				{
-   					name:"Content",
-   					value:5678
-   				},
-   				{
-   					name:"Likes",
-   					value:250000
-   				},
-   				{
-   					name:"Comments",
-   					value:4568
-   				},
+            if (itemsdata!=false)
+            {
+               for (var i=0;i<itemsdata[n].length;i++)               
+                  {
+                     if (itemsdata[n][i].network == 'instagram')
+                     {                                       
+                        itemslist = [
+                           {
+                              name:"Posts",
+                              value:itemsdata[n][i].totalposts,
+                              percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
+                              previousamt: itemsdata[n-1][i].totalposts
+                           },
+                           {
+                              name:"Likes",
+                              value:itemsdata[n][i].totallikes,
+                              percentdiff: this.percentdiff(itemsdata[n][i].totallikes,itemsdata[n-1][i].totallikes),
+                              previousamt: itemsdata[n-1][i].totallikes
+                           },
+                           {
+                              name:"Comments",
+                              value:itemsdata[n][i].totalfacebookcomments,
+                              percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments,itemsdata[n-1][i].totalfacebookcomments),
+                              previousamt: itemsdata[n-1][i].totalfacebookcomments
 
-   			];
+                           },
+                        ];
+                     }
+                  }         
+            }        
    			break;
 
    	}
 
 	for (var i=0; i < itemslist.length; i++) {
-	    rows.push(
+      if (this.props.charttitle=='youtube')
+      {
+        rows.push(      
+         <div className="col-sm-12" key={'mykey'+i}>
+            <h3 style={{marginTop:10}}>{itemslist[i].name}</h3>
+            <div className="metric">{this.addCommas(itemslist[i].value)}</div>                              
+         </div>
+       );
+      }
+      else
+      {
+	    rows.push(      
 	    	<div className="col-sm-12" key={'mykey'+i}>
 				<h3 style={{marginTop:10}}>{itemslist[i].name}</h3>
 				<div className="metric">{this.addCommas(itemslist[i].value)}</div>						
-				<div className="change m-green metric-small" style={{display:'inline-block'}}>							
-					<div className="arrow-up"></div>
-					<span className="large">32<span className="small">.45%</span></span>
+				<div className={"change m-" + (itemslist[i].percentdiff>=100?'green':'red') + " metric-small"} style={{display:'inline-block'}}>							
+					<div className={"arrow-" + (itemslist[i].percentdiff>=100?'up':'down')}></div>
+					<span className="large">{itemslist[i].percentdiff}% ({this.addCommas(itemslist[i].previousamt)})</span>
 				</div>					
 			</div>
 	    );
+      }
 	}
 
     return (
