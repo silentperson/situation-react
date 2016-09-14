@@ -9,7 +9,8 @@ export default class SocialFeed extends React.Component {
 		        limit: 2,                                   //Integer: max number of posts to load
 		        access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8'  //String: "APP_ID|APP_SECRET"
 		    },
-		    show_media:true,           
+		    show_media:true, 
+        length:400,           
 		});
 	}
 
@@ -46,7 +47,7 @@ export default class SocialFeed extends React.Component {
 			</header>
 			<div className="content cf-rss">
 				<div id="cf-rss-5" className="carousel slide" data-ride="carousel" style={carouselStyle}>
-					<div className="carousel-inner social-feed-container">							
+					<div className="carousel-inner social-feed-container" style={{height:"auto"}}>							
 					</div>						
 				</div>
 			</div>				

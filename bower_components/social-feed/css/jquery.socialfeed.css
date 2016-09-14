@@ -12,12 +12,12 @@
 .social-feed-element img {
     width: 100%;
     width: auto\9;
-    height: auto;
     border: 0;  
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
 }
 .social-feed-element .attachment {
+    height:400px;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
 }

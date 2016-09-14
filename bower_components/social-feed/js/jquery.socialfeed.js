@@ -286,7 +286,7 @@ if (typeof Object.create !== 'function') {
                                 if (element.entities.media && element.entities.media.length > 0) {
                                     var image_url = element.entities.media[0].media_url;
                                     if (image_url) {
-                                        post.attachment = '<img class="attachment img-responsive" src="' + image_url + '" />';
+                                        post.attachment = '<img class="attachment " src="' + image_url + '" />';
                                     }
                                 }
                             }
@@ -346,7 +346,7 @@ if (typeof Object.create !== 'function') {
                         } else if (element.object_id) {
                             image_url = Feed.facebook.graph + element.object_id + '/picture/?type=normal';
                         }
-                        return '<img class="attachment img-responsive" src="' + image_url + '" />';
+                        return '<img class="attachment " src="' + image_url + '" />';
                     },
                     getExternalImageURL: function(image_url, parameter) {
                         image_url = decodeURIComponent(image_url).split(parameter + '=')[1];
@@ -446,7 +446,7 @@ if (typeof Object.create !== 'function') {
                                             }
                                         }
                                     }
-                                    post.attachment = '<img class="attachment img-responsive" src="' + image + '"/>';
+                                    post.attachment = '<img class="attachment " src="' + image + '"/>';
                                 });
                             }
                         }
@@ -532,7 +532,7 @@ if (typeof Object.create !== 'function') {
                         post.description = '';
                         post.link = element.link;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment img-responsive" src="' + element.images.standard_resolution.url + '' + '" />';
+                            post.attachment = '<img class="attachment " src="' + element.images.standard_resolution.url + '' + '" />';
                         }
                         return post;
                     }
