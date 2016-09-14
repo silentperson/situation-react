@@ -172,6 +172,10 @@ export default class NoChartMetric extends React.Component {
         rows.push(      
          <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
             <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                              
+            <div className="change metric-small" style={{display:'inline-block'}}>                   
+               <div className="arrow-"></div>
+               <span className="large"></span>
+            </div>   
          </div>
        );
       }
