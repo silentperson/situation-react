@@ -9,6 +9,18 @@ export default class SocialFeed extends React.Component {
 		        limit: 2,                                   //Integer: max number of posts to load
 		        access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8'  //String: "APP_ID|APP_SECRET"
 		    },
+        // TWITTER
+        twitter:{
+            accounts: ['@spacex'],                      //Array: Specify a list of accounts from which to pull tweets
+            limit: 2,                                   //Integer: max number of tweets to load
+            consumer_key: 'bHpN7fxBkwJ2zxaktbRUQ2yCV',          //String: consumer key. make sure to have your app read-only
+            consumer_secret: 'dveS8wRMTFaKLUAbeoNIKtYPE7pI6TEznB5SWMyEtl4lQq54WO',//String: consumer secret key. make sure to have your app read-only
+         },
+        instagram:{
+          accounts: ['@teslamotors'],  //Array: Specify a list of accounts from which to pull posts
+          limit: 2,                                   //Integer: max number of posts to load
+          access_token: '430971923.d4bfcd8.51d1bbb0da5b415a9ecb9d825aef67af' //String: Instagram access token
+        },
 		    show_media:true, 
         length:400,           
 		});
