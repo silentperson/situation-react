@@ -22342,31 +22342,25 @@
 	            if (this.props.charttitle == 'youtube') {
 	               rows.push(_react2.default.createElement(
 	                  'div',
-	                  { className: 'col-sm-12', key: 'mykey' + i },
-	                  _react2.default.createElement(
-	                     'h3',
-	                     { style: { marginTop: 10 } },
-	                     itemslist[i].name
-	                  ),
+	                  { className: 'col-sm-12', key: 'mykey' + i, style: { padding: 15 } },
 	                  _react2.default.createElement(
 	                     'div',
 	                     { className: 'metric' },
-	                     this.addCommas(itemslist[i].value)
+	                     this.addCommas(itemslist[i].value),
+	                     ' ',
+	                     itemslist[i].name
 	                  )
 	               ));
 	            } else {
 	               rows.push(_react2.default.createElement(
 	                  'div',
-	                  { className: 'col-sm-12', key: 'mykey' + i },
-	                  _react2.default.createElement(
-	                     'h3',
-	                     { style: { marginTop: 10 } },
-	                     itemslist[i].name
-	                  ),
+	                  { className: 'col-sm-12', key: 'mykey' + i, style: { padding: 15 } },
 	                  _react2.default.createElement(
 	                     'div',
 	                     { className: 'metric' },
-	                     this.addCommas(itemslist[i].value)
+	                     this.addCommas(itemslist[i].value),
+	                     ' ',
+	                     itemslist[i].name
 	                  ),
 	                  _react2.default.createElement(
 	                     'div',

@@ -170,18 +170,16 @@ export default class NoChartMetric extends React.Component {
       if (this.props.charttitle=='youtube')
       {
         rows.push(      
-         <div className="col-sm-12" key={'mykey'+i}>
-            <h3 style={{marginTop:10}}>{itemslist[i].name}</h3>
-            <div className="metric">{this.addCommas(itemslist[i].value)}</div>                              
+         <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
+            <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                              
          </div>
        );
       }
       else
       {
 	    rows.push(      
-	    	<div className="col-sm-12" key={'mykey'+i}>
-				<h3 style={{marginTop:10}}>{itemslist[i].name}</h3>
-				<div className="metric">{this.addCommas(itemslist[i].value)}</div>						
+	    	<div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
+				<div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>						
 				<div className={"change m-" + (itemslist[i].percentdiff>=100?'green':'red') + " metric-small"} style={{display:'inline-block'}}>							
 					<div className={"arrow-" + (itemslist[i].percentdiff>=100?'up':'down')}></div>
 					<span className="large">{itemslist[i].percentdiff}% ({this.addCommas(itemslist[i].previousamt)})</span>
