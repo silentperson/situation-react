@@ -95,7 +95,7 @@ if (typeof Object.create !== 'function') {
                 }
                 return string.replace(/(<([^>]+)>)|nbsp;|\s{2,}|/ig, "");
             }
-        };
+        };        
 
         function SocialFeedPost(social_network, data) {
             this.content = data;
@@ -108,7 +108,7 @@ if (typeof Object.create !== 'function') {
             this.content.text = Utility.wrapLinks(Utility.shorten(data.message + ' ' + data.description), data.social_network);
             this.content.moderation_passed = (options.moderation) ? options.moderation(this.content) : true;
 
-            if (Feed[social_network].posts.length ==0) 
+            if ((Feed[social_network].posts.length == 0) && (social_network=='facebook'))
                 this.content.isfirst = true;
             else
                 this.content.isfirst = false;
