@@ -17,7 +17,7 @@
     -ms-interpolation-mode: bicubic;
 }
 .social-feed-element .attachment {
-    height:400px;
+    height:400px !important;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
 }

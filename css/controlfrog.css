@@ -341,7 +341,7 @@ body.white {
     body.white .cf-item header p span {
       background-color: darkgrey; }
   body.white .metric {
-    color: #7d7d7d; }
+    color: #333; }
   body.white .cf-rag ul li {
     border-bottom: solid 1px white; }
     body.white .cf-rag ul li:last-child {
