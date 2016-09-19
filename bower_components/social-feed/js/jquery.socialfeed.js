@@ -270,8 +270,7 @@ if (typeof Object.create !== 'function') {
                     },
                     unifyPostData: function(element) {
                         var post = {};
-                        if (element.id) {
-                            console.log(element);
+                        if (element.id) {                            
                             post.id = element.id;
                             //prevent a moment.js console warning due to Twitter's poor date format.
                             post.dt_create = moment(new Date(element.created_at));
@@ -314,8 +313,7 @@ if (typeof Object.create !== 'function') {
                             var username = account.substr(1);
                             Feed.facebook.utility.getUserId(username, function(userdata) {
                                 if (userdata.id !== '') {
-                                    request_url = Feed.facebook.graph + 'v2.4/' + userdata.id + '/posts'+ fields + limit + query_extention;                                    
-                                    console.log(request_url);
+                                    request_url = Feed.facebook.graph + 'v2.4/' + userdata.id + '/posts'+ fields + limit + query_extention;                                                                        
                                     proceed(request_url);
                                 }
                             });
@@ -530,8 +528,7 @@ if (typeof Object.create !== 'function') {
                         });
                     },
                     unifyPostData: function(element) {
-                        var post = {};
-                        console.log(element);
+                        var post = {};                        
 
                         post.id = element.id;
                         post.dt_create = moment(element.created_time * 1000);
