@@ -106,7 +106,7 @@ if (typeof Object.create !== 'function') {
             this.content.date = data.dt_create.format(options.date_format);
             this.content.dt_create = this.content.dt_create.valueOf();
             this.content.text = Utility.wrapLinks(Utility.shorten(data.message + ' ' + data.description), data.social_network);
-            this.content.moderation_passed = (options.moderation) ? options.moderation(this.content) : true;
+            this.content.moderation_passed = (options.moderation) ? options.moderation(this.content) : true;            
 
             if ((Feed[social_network].posts.length == 0) && (social_network=='facebook'))
                 this.content.isfirst = true;
@@ -271,6 +271,7 @@ if (typeof Object.create !== 'function') {
                     unifyPostData: function(element) {
                         var post = {};
                         if (element.id) {
+                            console.log(element);
                             post.id = element.id;
                             //prevent a moment.js console warning due to Twitter's poor date format.
                             post.dt_create = moment(new Date(element.created_at));
@@ -281,6 +282,7 @@ if (typeof Object.create !== 'function') {
                             post.message = element.text;
                             post.description = '';
                             post.link = 'http://twitter.com/' + element.user.screen_name + '/status/' + element.id_str;
+                            post.statsdata = element.favorite_count + " Favourites &nbsp;" + element.retweet_count + " Retweets";
 
                             if (options.show_media === true) {
                                 if (element.entities.media && element.entities.media.length > 0) {
@@ -289,7 +291,7 @@ if (typeof Object.create !== 'function') {
                                         post.attachment = '<img class="attachment " src="' + image_url + '" />';
                                     }
                                 }
-                            }
+                            }                            
                         }
                         return post;
                     }
@@ -303,7 +305,7 @@ if (typeof Object.create !== 'function') {
                     var proceed = function(request_url){
                         Utility.request(request_url, Feed.facebook.utility.getPosts);
                     };
-                    var fields = '?fields=id,from,name,message,created_time,story,description,link';
+                    var fields = '?fields=id,from,name,message,created_time,story,description,link,comments.limit(1).summary(true),likes.limit(1).summary(true),shares';
                        fields += (options.show_media === true)?',picture,object_id':'';
                     var request_url, limit = '&limit=' + options.facebook.limit,
                         query_extention = '&access_token=' + options.facebook.access_token + '&callback=?';
@@ -312,14 +314,15 @@ if (typeof Object.create !== 'function') {
                             var username = account.substr(1);
                             Feed.facebook.utility.getUserId(username, function(userdata) {
                                 if (userdata.id !== '') {
-                                    request_url = Feed.facebook.graph + 'v2.4/' + userdata.id + '/posts'+ fields + limit + query_extention;
+                                    request_url = Feed.facebook.graph + 'v2.4/' + userdata.id + '/posts'+ fields + limit + query_extention;                                    
+                                    console.log(request_url);
                                     proceed(request_url);
                                 }
                             });
                             break;
                         case '!':
                             var page = account.substr(1);
-                            request_url = Feed.facebook.graph + 'v2.4/' + page + '/feed'+ fields + limit + query_extention;
+                            request_url = Feed.facebook.graph + 'v2.4/' + page + '/feed'+ fields + limit + query_extention;                            
                             proceed(request_url);
                             break;
                         default:
@@ -378,6 +381,11 @@ if (typeof Object.create !== 'function') {
                         post.message = (text) ? text : '';
                         post.description = (element.description) ? element.description : '';
                         post.link = (element.link) ? element.link : 'http://facebook.com/' + element.from.id;
+                        if (element.shares==undefined)
+                            var sharecount=0;
+                        else
+                            var sharecount=element.shares.count;
+                        post.statsdata = element.likes.summary.total_count + " Likes &nbsp;" + element.comments.summary.total_count + " Comments &nbsp;" + sharecount + " Shares";                        
 
                         if (options.show_media === true) {
                             if (element.picture) {
@@ -452,6 +460,7 @@ if (typeof Object.create !== 'function') {
                         }
                         post.message = element.title;
                         post.link = element.url;
+                        post.statsdata = "";
 
                         return post;
                     }
@@ -522,6 +531,7 @@ if (typeof Object.create !== 'function') {
                     },
                     unifyPostData: function(element) {
                         var post = {};
+                        console.log(element);
 
                         post.id = element.id;
                         post.dt_create = moment(element.created_time * 1000);
@@ -534,6 +544,7 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media) {
                             post.attachment = '<img class="attachment " src="' + element.images.standard_resolution.url + '' + '" />';
                         }
+                        post.statsdata = element.likes.count + " Likes &nbsp;" + element.comments.count + " Comments";
                         return post;
                     }
                 }
@@ -609,6 +620,7 @@ if (typeof Object.create !== 'function') {
                                 vk_post.render();
                             });
                         }
+                        post.statsdata = "";
                     },
                     getUser: function(user_json, post, element, json) {
                         post.author_name = user_json.response[0].first_name + ' ' + user_json.response[0].last_name;
@@ -655,6 +667,7 @@ if (typeof Object.create !== 'function') {
                             post.message = element.title['$t'] + '</br></br>' + stripHTML(element.content['$t']);
                             post.description = '';
                             post.link = element.link.pop().href;
+                            post.statsdata = "";
 
                             if (options.show_media) {
                                 if (element['media$thumbnail']) {
@@ -715,6 +728,7 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media) {
                             post.attachment = '<img class="attachment" src="' + element.image['original'].url + '" />';
                         }
+                        post.statsdata = "";
                         return post;
                     }
                 }
@@ -754,6 +768,7 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media && element.mediaGroups ) {
                             post.attachment = '<img class="attachment" src="' + element.mediaGroups[0].contents[0].url + '" />';
                         }
+                        post.statsdata = "";
                         return post;
                     }
                 }
