@@ -118,7 +118,7 @@
     line-height: 16px;
 }
 .social-feed-element:hover{
-    box-shadow: 0 0 30px 0 rgba(10, 10, 10, 0.8);
+    /*box-shadow: 0 0 30px 0 rgba(10, 10, 10, 0.8);*/
 }
 
 .social-feed-element .content{

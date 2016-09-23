@@ -1,4 +1,4 @@
-<div class="social-feed-element item {{? it.isfirst}}active{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" style="margin:10px;width:75%;">
+<div class="social-feed-element item {{? it.isfirst}}active{{?}}" dt-create="{{=it.dt_create}}" social-feed-id = "{{=it.id}}" style="margin:10px;">
     {{=it.attachment}}
     <div class='content'>
         <a class="pull-left" href="{{=it.author_link}}" target="_blank">
@@ -13,9 +13,11 @@
             <div class='text-wrapper'>
                 <p class="social-feed-text">{{=it.text}} <a href="{{=it.link}}" target="_blank" class="read-button">read more</a></p>
             </div>
-            <p>
-                {{=it.statsdata}}                                
-            </p>
+            <div style="padding-top:10px;">
+                <p>
+                    {{=it.statsdata}}                                
+                </p>
+            </div>
         </div>
     </div>
     

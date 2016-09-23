@@ -287,7 +287,7 @@ if (typeof Object.create !== 'function') {
                                 if (element.entities.media && element.entities.media.length > 0) {
                                     var image_url = element.entities.media[0].media_url;
                                     if (image_url) {
-                                        post.attachment = '<img class="attachment " src="' + image_url + '" />';
+                                        post.attachment = '<img class="attachment img-responsive " src="' + image_url + '" />';
                                     }
                                 }
                             }                            
@@ -347,7 +347,7 @@ if (typeof Object.create !== 'function') {
                         } else if (element.object_id) {
                             image_url = Feed.facebook.graph + element.object_id + '/picture/?type=normal';
                         }
-                        return '<img class="attachment " src="' + image_url + '" />';
+                        return '<img class="attachment img-responsive " src="' + image_url + '" />';
                     },
                     getExternalImageURL: function(image_url, parameter) {
                         image_url = decodeURIComponent(image_url).split(parameter + '=')[1];
@@ -452,7 +452,7 @@ if (typeof Object.create !== 'function') {
                                             }
                                         }
                                     }
-                                    post.attachment = '<img class="attachment " src="' + image + '"/>';
+                                    post.attachment = '<img class="attachment img-responsive " src="' + image + '"/>';
                                 });
                             }
                         }
@@ -539,7 +539,7 @@ if (typeof Object.create !== 'function') {
                         post.description = '';
                         post.link = element.link;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment " src="' + element.images.standard_resolution.url + '' + '" />';
+                            post.attachment = '<img class="attachment img-responsive " src="' + element.images.standard_resolution.url + '' + '" />';
                         }
                         post.statsdata = element.likes.count + " Likes &nbsp;" + element.comments.count + " Comments";
                         return post;
@@ -595,11 +595,11 @@ if (typeof Object.create !== 'function') {
                         if (options.show_media) {
                             if (element.attachment) {
                                 if (element.attachment.type === 'link')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.link.image_src + '" />';
+                                    post.attachment = '<img class="attachment img-responsive" src="' + element.attachment.link.image_src + '" />';
                                 if (element.attachment.type === 'video')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.video.image_big + '" />';
+                                    post.attachment = '<img class="attachment img-responsive" src="' + element.attachment.video.image_big + '" />';
                                 if (element.attachment.type === 'photo')
-                                    post.attachment = '<img class="attachment" src="' + element.attachment.photo.src_big + '" />';
+                                    post.attachment = '<img class="attachment img-responsive" src="' + element.attachment.photo.src_big + '" />';
                             }
                         }
 
@@ -668,7 +668,7 @@ if (typeof Object.create !== 'function') {
 
                             if (options.show_media) {
                                 if (element['media$thumbnail']) {
-                                    post.attachment = '<img class="attachment" src="' + element['media$thumbnail']['url'] + '" />';
+                                    post.attachment = '<img class="attachment img-responsive" src="' + element['media$thumbnail']['url'] + '" />';
                                 }
                             }
 
@@ -723,7 +723,7 @@ if (typeof Object.create !== 'function') {
                         post.social_network = 'pinterest';
                         post.link = element.link ? element.link : 'https://www.pinterest.com/pin/' + element.id;
                         if (options.show_media) {
-                            post.attachment = '<img class="attachment" src="' + element.image['original'].url + '" />';
+                            post.attachment = '<img class="attachment img-responsive" src="' + element.image['original'].url + '" />';
                         }
                         post.statsdata = "";
                         return post;
@@ -763,7 +763,7 @@ if (typeof Object.create !== 'function') {
                         post.social_network = 'rss';
                         post.link = element.link;
                         if (options.show_media && element.mediaGroups ) {
-                            post.attachment = '<img class="attachment" src="' + element.mediaGroups[0].contents[0].url + '" />';
+                            post.attachment = '<img class="attachment img-responsive" src="' + element.mediaGroups[0].contents[0].url + '" />';
                         }
                         post.statsdata = "";
                         return post;
