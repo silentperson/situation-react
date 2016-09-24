@@ -10,14 +10,14 @@
     margin-left: 10px;
 }
 .social-feed-element img {
-    width: 100%;
-    width: auto\9;
+    /*width: 100%;*/    
     border: 0;  
+    margin:auto;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
 }
 .social-feed-element .attachment {
-    height:400px !important;
+    height:600px !important;
     vertical-align: middle;
     -ms-interpolation-mode: bicubic;
 }
