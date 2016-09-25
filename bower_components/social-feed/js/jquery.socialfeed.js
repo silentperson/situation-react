@@ -16,7 +16,7 @@ if (typeof Object.create !== 'function') {
             show_media: false, // show images of attachments if available
             media_min_width: 300,
             length: 500, // maximum length of post message shown
-            date_format: 'll'
+            date_format: 'LLL'
         };
         //---------------------------------------------------------------------------------
         var options = $.extend(defaults, _options),
