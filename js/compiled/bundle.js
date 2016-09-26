@@ -22242,10 +22242,9 @@
 	                  for (var i = 0; i < itemsdata[n].length; i++) {
 	                     if (itemsdata[n][i].network == 'facebook') {
 	                        itemslist = [{
-	                           name: "Posts",
-	                           value: itemsdata[n][i].totalposts,
-	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
-	                           previousamt: itemsdata[n - 1][i].totalposts
+	                           name: "Fans",
+	                           value: itemsdata[n][i].maxlikes,
+	                           previousamt: -1
 	                        }, {
 	                           name: "Likes",
 	                           value: itemsdata[n][i].totallikes,
@@ -22257,10 +22256,10 @@
 	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments, itemsdata[n - 1][i].totalfacebookcomments),
 	                           previousamt: itemsdata[n - 1][i].totalfacebookcomments
 	                        }, {
-	                           name: "Shares",
-	                           value: itemsdata[n][i].totalfacebookshares,
-	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookshares, itemsdata[n - 1][i].totalfacebookshares),
-	                           previousamt: itemsdata[n - 1][i].totalfacebookshares
+	                           name: "Posts",
+	                           value: itemsdata[n][i].totalposts,
+	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
+	                           previousamt: itemsdata[n - 1][i].totalposts
 	                        }];
 	                     }
 	                  }
@@ -22271,6 +22270,10 @@
 	                  for (var i = 0; i < itemsdata[n].length; i++) {
 	                     if (itemsdata[n][i].network == 'twitter') {
 	                        itemslist = [{
+	                           name: "Followers",
+	                           value: itemsdata[n][i].contributorfollowersmax,
+	                           previousamt: -1
+	                        }, {
 	                           name: "Tweets",
 	                           value: itemsdata[n][i].totalposts,
 	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
@@ -22315,21 +22318,23 @@
 	                  for (var i = 0; i < itemsdata[n].length; i++) {
 	                     if (itemsdata[n][i].network == 'instagram') {
 	                        itemslist = [{
+	                           name: "Followers",
+	                           value: itemsdata[n][i].maxlikes,
+	                           previousamt: -1
+	                        }, {
+	                           name: "Likes",
+	                           value: itemsdata[n][i].totallikes,
+	                           previousamt: -1
+	                        }, {
+	                           name: "Comments",
+	                           value: itemsdata[n][i].totalfacebookcomments,
+	                           previousamt: -1
+	
+	                        }, {
 	                           name: "Posts",
 	                           value: itemsdata[n][i].totalposts,
 	                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts, itemsdata[n - 1][i].totalposts),
 	                           previousamt: itemsdata[n - 1][i].totalposts
-	                        }, {
-	                           name: "Likes",
-	                           value: itemsdata[n][i].totallikes,
-	                           percentdiff: this.percentdiff(itemsdata[n][i].totallikes, itemsdata[n - 1][i].totallikes),
-	                           previousamt: itemsdata[n - 1][i].totallikes
-	                        }, {
-	                           name: "Comments",
-	                           value: itemsdata[n][i].totalfacebookcomments,
-	                           percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments, itemsdata[n - 1][i].totalfacebookcomments),
-	                           previousamt: itemsdata[n - 1][i].totalfacebookcomments
-	
 	                        }];
 	                     }
 	                  }
@@ -22339,7 +22344,7 @@
 	         }
 	
 	         for (var i = 0; i < itemslist.length; i++) {
-	            if (this.props.charttitle == 'youtube') {
+	            if (this.props.charttitle == 'youtube' || itemslist[i].previousamt == -1) {
 	               rows.push(_react2.default.createElement(
 	                  'div',
 	                  { className: 'col-sm-12', key: 'mykey' + i, style: { padding: 15 } },
@@ -22370,15 +22375,14 @@
 	                  ),
 	                  _react2.default.createElement(
 	                     'div',
-	                     { className: "change m-" + (itemslist[i].percentdiff >= 100 ? 'green' : 'red') + " metric-small", style: { display: 'inline-block' } },
-	                     _react2.default.createElement('div', { className: "arrow-" + (itemslist[i].percentdiff >= 100 ? 'up' : 'down') }),
+	                     { className: "change metric-small", style: { display: 'inline-block' } },
 	                     _react2.default.createElement(
 	                        'span',
 	                        { className: 'large' },
-	                        itemslist[i].percentdiff,
-	                        '% (',
 	                        this.addCommas(itemslist[i].previousamt),
-	                        ')'
+	                        ' ',
+	                        itemslist[i].name,
+	                        ' last year'
 	                     )
 	                  )
 	               ));
@@ -22387,7 +22391,7 @@
 	
 	         return _react2.default.createElement(
 	            'div',
-	            { className: 'col-sm-6 cf-item', style: { paddingBottom: 20 } },
+	            { className: 'col-sm-6 cf-item', style: { paddingBottom: 20, paddingTop: 25 } },
 	            _react2.default.createElement(
 	               'header',
 	               null,
@@ -22396,7 +22400,8 @@
 	                  null,
 	                  _react2.default.createElement('span', null),
 	                  this.props.charttitle
-	               )
+	               ),
+	               _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px', style: { paddingRight: 10 } })
 	            ),
 	            _react2.default.createElement(
 	               'div',
@@ -22407,7 +22412,6 @@
 	                  _react2.default.createElement(
 	                     'div',
 	                     { className: 'cf-svmc' },
-	                     _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px' }),
 	                     _react2.default.createElement(
 	                        'div',
 	                        { className: 'row' },
@@ -22675,7 +22679,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-sm-6', style: { height: 1000 } },
+	        { className: 'col-sm-6', style: { height: 900, paddingTop: 25 } },
 	        _react2.default.createElement(
 	          'header',
 	          { style: headerStyle },

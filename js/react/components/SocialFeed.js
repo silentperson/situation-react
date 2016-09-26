@@ -53,7 +53,7 @@ export default class SocialFeed extends React.Component {
    	};
 
     return (
-    	<div className="col-sm-6" style={{height:1000}}>
+    	<div className="col-sm-6" style={{height:900,paddingTop:25}}>
 			<header style={headerStyle}>
 				<p style={pStyle}><span style={spanStyle}></span>Latest Posts</p>
 			</header>
