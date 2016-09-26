@@ -22673,13 +22673,13 @@
 	      };
 	
 	      var carouselStyle = {
-	        height: 1000,
+	        height: 600,
 	        margin: 'auto'
 	      };
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-sm-6', style: { height: 900, paddingTop: 25 } },
+	        { className: 'col-sm-6', style: { height: 800, paddingTop: 25 } },
 	        _react2.default.createElement(
 	          'header',
 	          { style: headerStyle },

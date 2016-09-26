@@ -48,12 +48,12 @@ export default class SocialFeed extends React.Component {
    	};
 
    	var carouselStyle = {
-   		height:1000,
+   		height:600,
    		margin:'auto'
    	};
 
     return (
-    	<div className="col-sm-6" style={{height:900,paddingTop:25}}>
+    	<div className="col-sm-6" style={{height:800,paddingTop:25}}>
 			<header style={headerStyle}>
 				<p style={pStyle}><span style={spanStyle}></span>Latest Posts</p>
 			</header>
@@ -61,8 +61,9 @@ export default class SocialFeed extends React.Component {
 				<div id="cf-rss-5" className="carousel slide" data-ride="carousel" style={carouselStyle}>
 					<div className="carousel-inner social-feed-container" style={{height:"auto"}}>							
 					</div>						
-				</div>
-			</div>				
+				</div>      
+			</div>	
+      
 		</div> 
     );
     	
