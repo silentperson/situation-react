@@ -45,7 +45,7 @@ class SituationApp extends React.Component {
 			      }.bind(this)
 		      });
 		     }.bind(this)
-	    , 5000);
+	    , 3600000);
 	}
 
 	render () {

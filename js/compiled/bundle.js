@@ -129,7 +129,7 @@
 							console.error(this.props.url, status, err.toString());
 						}.bind(this)
 					});
-				}.bind(this), 5000);
+				}.bind(this), 3600000);
 			}
 		}, {
 			key: 'render',
