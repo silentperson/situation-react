@@ -1,3 +1,9 @@
+* {
+    font-smooth:always !important;
+    -webkit-font-smoothing: subpixel-antialiased !important;
+    text-rendering: optimizeLegibility !important;
+}
+
 html { overflow-y: hidden; }
 
 body {
