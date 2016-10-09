@@ -203,7 +203,7 @@ export default class NoChartMetric extends React.Component {
     	<div className="col-sm-6 cf-item" style={{paddingBottom:20,paddingTop:25}}>
 			<header>
 				<p><span></span>{this.props.charttitle}</p>
-            <img src={"img/"+this.props.charttitle+".svg"} className="hidden-xs hidden-sm img-responsive img-logo" width="80px" height="80px" style={{paddingRight:10}}/>
+            <img src={"img/"+this.props.charttitle+".svg"} className="hidden-xs hidden-sm img-responsive img-logo" width="80px" height="80px" style={{paddingRight:15}}/>
 			</header>
 
 			<div className="content">

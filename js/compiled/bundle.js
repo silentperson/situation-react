@@ -22401,7 +22401,7 @@
 	                  _react2.default.createElement('span', null),
 	                  this.props.charttitle
 	               ),
-	               _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px', style: { paddingRight: 10 } })
+	               _react2.default.createElement('img', { src: "img/" + this.props.charttitle + ".svg", className: 'hidden-xs hidden-sm img-responsive img-logo', width: '80px', height: '80px', style: { paddingRight: 15 } })
 	            ),
 	            _react2.default.createElement(
 	               'div',
