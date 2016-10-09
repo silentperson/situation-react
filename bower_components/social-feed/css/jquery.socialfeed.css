@@ -57,6 +57,8 @@
     min-height:20px;
 }
 .social-feed-element p.social-feed-text {
+    font-size:1.7em;
+    line-height: 1.2em;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
