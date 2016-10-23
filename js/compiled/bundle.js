@@ -22631,22 +22631,22 @@
 	      $('.social-feed-container').socialfeed({
 	        facebook: {
 	          accounts: ['@malaysia.travel'], //Array: Specify a list of accounts from which to pull wall posts
-	          limit: 4, //Integer: max number of posts to load
+	          limit: 5, //Integer: max number of posts to load
 	          access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8' //String: "APP_ID|APP_SECRET"
 	        },
 	        // TWITTER
 	        twitter: {
 	          accounts: ['@tourismmalaysia'], //Array: Specify a list of accounts from which to pull tweets
-	          limit: 4, //Integer: max number of tweets to load
+	          limit: 5, //Integer: max number of tweets to load
 	          consumer_key: 'bHpN7fxBkwJ2zxaktbRUQ2yCV', //String: consumer key. make sure to have your app read-only
 	          consumer_secret: 'dveS8wRMTFaKLUAbeoNIKtYPE7pI6TEznB5SWMyEtl4lQq54WO' },
 	        instagram: {
 	          accounts: ['@malaysia.truly.asia'], //Array: Specify a list of accounts from which to pull posts
-	          limit: 4, //Integer: max number of posts to load
+	          limit: 5, //Integer: max number of posts to load
 	          access_token: '430971923.d4bfcd8.51d1bbb0da5b415a9ecb9d825aef67af' //String: Instagram access token
 	        },
 	        show_media: true,
-	        length: 400
+	        length: 900
 	      });
 	    }
 	  }, {
@@ -22679,7 +22679,7 @@
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-sm-6', style: { height: 800, paddingTop: 25 } },
+	        { className: 'col-sm-6', style: { height: 900, paddingTop: 25 } },
 	        _react2.default.createElement(
 	          'header',
 	          { style: headerStyle },
@@ -22695,7 +22695,7 @@
 	          { className: 'content cf-rss' },
 	          _react2.default.createElement(
 	            'div',
-	            { id: 'cf-rss-5', className: 'carousel slide', 'data-ride': 'carousel', style: carouselStyle },
+	            { id: 'cf-rss-5', className: 'carousel slide', 'data-ride': 'carousel', 'data-interval': '20000', style: carouselStyle },
 	            _react2.default.createElement('div', { className: 'carousel-inner social-feed-container', style: { height: "auto" } })
 	          )
 	        )

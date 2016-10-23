@@ -6,23 +6,23 @@ export default class SocialFeed extends React.Component {
 		$('.social-feed-container').socialfeed({		    
 		    facebook:{
 		        accounts: ['@malaysia.travel'],  //Array: Specify a list of accounts from which to pull wall posts
-		        limit: 4,                                   //Integer: max number of posts to load
+		        limit: 5,                                   //Integer: max number of posts to load
 		        access_token: '438094802901450|rVxUCX9FrILNjsvpo17pijbsQX8'  //String: "APP_ID|APP_SECRET"
 		    },
         // TWITTER
         twitter:{
             accounts: ['@tourismmalaysia'],                      //Array: Specify a list of accounts from which to pull tweets
-            limit: 4,                                   //Integer: max number of tweets to load
+            limit: 5,                                   //Integer: max number of tweets to load
             consumer_key: 'bHpN7fxBkwJ2zxaktbRUQ2yCV',          //String: consumer key. make sure to have your app read-only
             consumer_secret: 'dveS8wRMTFaKLUAbeoNIKtYPE7pI6TEznB5SWMyEtl4lQq54WO',//String: consumer secret key. make sure to have your app read-only
          },
         instagram:{
           accounts: ['@malaysia.truly.asia'],  //Array: Specify a list of accounts from which to pull posts
-          limit: 4,                                   //Integer: max number of posts to load
+          limit: 5,                                   //Integer: max number of posts to load
           access_token: '430971923.d4bfcd8.51d1bbb0da5b415a9ecb9d825aef67af' //String: Instagram access token
         },
 		    show_media:true, 
-        length:400,           
+        length:900,           
 		});
 	}
 
@@ -53,12 +53,12 @@ export default class SocialFeed extends React.Component {
    	};
 
     return (
-    	<div className="col-sm-6" style={{height:800,paddingTop:25}}>
+    	<div className="col-sm-6" style={{height:900,paddingTop:25}}>
 			<header style={headerStyle}>
 				<p style={pStyle}><span style={spanStyle}></span>Latest Posts</p>
 			</header>
 			<div className="content cf-rss">
-				<div id="cf-rss-5" className="carousel slide" data-ride="carousel" style={carouselStyle}>
+				<div id="cf-rss-5" className="carousel slide" data-ride="carousel" data-interval="20000" style={carouselStyle}>
 					<div className="carousel-inner social-feed-container" style={{height:"auto"}}>							
 					</div>						
 				</div>      
