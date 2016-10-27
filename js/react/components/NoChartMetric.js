@@ -49,7 +49,13 @@ export default class NoChartMetric extends React.Component {
                            name:"Fans",
                            value:itemsdata[n][i].maxlikes,                           
                            previousamt: -1
-                        },                        
+                        },        
+                        {
+                           name:"Posts",
+                           value:itemsdata[n][i].totalposts,
+                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
+                           previousamt: itemsdata[n-1][i].totalposts                        
+                        },                 
                         {
                            name:"Likes",
                            value:itemsdata[n][i].totallikes,
@@ -62,12 +68,7 @@ export default class NoChartMetric extends React.Component {
                            percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments,itemsdata[n-1][i].totalfacebookcomments),
                            previousamt: itemsdata[n-1][i].totalfacebookcomments
                         },
-                        {
-                           name:"Posts",
-                           value:itemsdata[n][i].totalposts,
-                           percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
-                           previousamt: itemsdata[n-1][i].totalposts                        
-                        },                                                
+                                                                       
                      ];
                   }
                }
@@ -84,6 +85,7 @@ export default class NoChartMetric extends React.Component {
                            {
                               name:"Followers",
                               value:itemsdata[n][i].contributorfollowersmax,                              
+                              //percentdiff: this.percentdiff(itemsdata[n][i].contributorfollowersmax,itemsdata[n-1][i].contributorfollowersmax),
                               previousamt: -1                           
                            },
                            {
@@ -113,16 +115,16 @@ export default class NoChartMetric extends React.Component {
                      {
                         itemslist = [
                            {
+                              name:"Views",
+                              value:itemsdata[n][i].maxviews,
+                              //percentdiff: this.percentdiff(itemsdata[n][i].maxviews,itemsdata[n-1][i].maxviews),
+                              previousamt: -1                                             
+                           },
+                           {
                               name:"Videos",
                               value:itemsdata[n][i].maxstatus,           
                               percentdiff: this.percentdiff(itemsdata[n][i].maxstatus,itemsdata[n-1][i].maxstatus),
                               previousamt: itemsdata[n-1][i].maxstatus                                              
-                           },
-                           {
-                              name:"Views",
-                              value:itemsdata[n][i].maxviews,
-                              percentdiff: this.percentdiff(itemsdata[n][i].maxviews,itemsdata[n-1][i].maxviews),
-                              previousamt: itemsdata[n-1][i].maxviews                                              
                            },
                            {
                               name:"Comments",
@@ -147,17 +149,6 @@ export default class NoChartMetric extends React.Component {
                               name:"Followers",
                               value:itemsdata[n][i].maxlikes,                              
                               previousamt: -1
-                           },                           
-                           {
-                              name:"Likes",
-                              value:itemsdata[n][i].totallikes,                              
-                              previousamt: -1
-                           },
-                           {
-                              name:"Comments",
-                              value:itemsdata[n][i].totalfacebookcomments,                              
-                              previousamt: -1
-
                            },
                            {
                               name:"Posts",
@@ -165,6 +156,20 @@ export default class NoChartMetric extends React.Component {
                               percentdiff: this.percentdiff(itemsdata[n][i].totalposts,itemsdata[n-1][i].totalposts),
                               previousamt: itemsdata[n-1][i].totalposts
                            },                           
+                           {
+                              name:"Likes",
+                              value:itemsdata[n][i].totallikes,                              
+                              percentdiff: this.percentdiff(itemsdata[n][i].totallikes,itemsdata[n-1][i].totallikes),
+                              previousamt: itemsdata[n-1][i].totallikes
+                           },
+                           {
+                              name:"Comments",
+                              value:itemsdata[n][i].totalfacebookcomments,                              
+                              percentdiff: this.percentdiff(itemsdata[n][i].totalfacebookcomments,itemsdata[n-1][i].totallikes),
+                              previousamt: itemsdata[n-1][i].totalfacebookcomments
+
+                           },
+                                                      
                         ];
                      }
                   }         
@@ -176,15 +181,40 @@ export default class NoChartMetric extends React.Component {
 	for (var i=0; i < itemslist.length; i++) {
       if ((this.props.charttitle=='youtube')||(itemslist[i].previousamt==-1))
       {
-        rows.push(      
-         <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
-            <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                              
-            <div className="change metric-small" style={{display:'inline-block'}}>                   
-               <div className="arrow-"></div>
-               <span className="large"></span>
-            </div>   
-         </div>
-       );
+         if ((this.props.charttitle=='youtube')) {
+            if (itemslist[i].name=='Views'||(itemslist[i].previousamt==-1)) {
+               rows.push(      
+                  <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
+                     <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                              
+                     <div className="change metric-small" style={{display:'inline-block'}}>                   
+                        <div className="arrow-"></div>
+                        <span className="large"></span>
+                     </div>   
+                  </div>
+                );
+            }
+            else{
+               rows.push(      
+                  <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
+                     <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                
+                     <div className={"change metric-small"} style={{display:'inline-block'}}>                                    
+                        <span className="large">{this.addCommas(itemslist[i].previousamt)} {itemslist[i].name} last year</span>
+                     </div>               
+                  </div>
+                );
+            }
+         }
+         else{
+            rows.push(      
+               <div className="col-sm-12" key={'mykey'+i} style={{padding:15}}>
+                  <div className="metric">{this.addCommas(itemslist[i].value)} {itemslist[i].name}</div>                              
+                  <div className="change metric-small" style={{display:'inline-block'}}>                   
+                     <div className="arrow-"></div>
+                     <span className="large"></span>
+                  </div>   
+               </div>
+            );
+         }
       }
       else
       {
