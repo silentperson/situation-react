@@ -47,15 +47,19 @@ export default class SocialFeed extends React.Component {
    		marginRight:5
    	};
 
-   	var carouselStyle = {
-   		height:600,
-   		margin:'auto'
-   	};
-
+   	// var carouselStyle = {
+   	// 	height:600,
+   	// 	margin:'auto'
+   	// };
+    var carouselStyle = {
+          height:900,
+          margin:'auto',
+       background: 'white' 
+      };
     return (
     	<div className="col-sm-6" style={{height:900,paddingTop:25}}>
 			<header style={headerStyle}>
-				<p style={pStyle}><span style={spanStyle}></span>Latests Posts</p>
+				<p style={pStyle}><span style={spanStyle}></span>Latest Posts</p>
 			</header>
 			<div className="content cf-rss">
 				<div id="cf-rss-5" className="carousel slide" data-ride="carousel" data-interval="20000" style={carouselStyle}>

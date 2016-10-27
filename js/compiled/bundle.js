@@ -22717,11 +22717,15 @@
 	        marginRight: 5
 	      };
 	
+	      // var carouselStyle = {
+	      // 	height:600,
+	      // 	margin:'auto'
+	      // };
 	      var carouselStyle = {
-	        height: 600,
-	        margin: 'auto'
+	        height: 900,
+	        margin: 'auto',
+	        background: 'white'
 	      };
-	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'col-sm-6', style: { height: 900, paddingTop: 25 } },
@@ -22732,7 +22736,7 @@
 	            'p',
 	            { style: pStyle },
 	            _react2.default.createElement('span', { style: spanStyle }),
-	            'Latests Posts'
+	            'Latest Posts'
 	          )
 	        ),
 	        _react2.default.createElement(
