@@ -47,14 +47,10 @@ export default class SocialFeed extends React.Component {
    		marginRight:5
    	};
 
-   	// var carouselStyle = {
-   	// 	height:600,
-   	// 	margin:'auto'
-   	// };
     var carouselStyle = {
           height:900,
           margin:'auto',
-       background: 'white' 
+          background: 'white' 
       };
     return (
     	<div className="col-sm-6" style={{height:900,paddingTop:25}}>

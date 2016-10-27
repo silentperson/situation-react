@@ -22717,10 +22717,6 @@
 	        marginRight: 5
 	      };
 	
-	      // var carouselStyle = {
-	      // 	height:600,
-	      // 	margin:'auto'
-	      // };
 	      var carouselStyle = {
 	        height: 900,
 	        margin: 'auto',
