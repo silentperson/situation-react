@@ -22732,7 +22732,7 @@
 	            'p',
 	            { style: pStyle },
 	            _react2.default.createElement('span', { style: spanStyle }),
-	            'Latests Posts'
+	            'New Post'
 	          )
 	        ),
 	        _react2.default.createElement(
