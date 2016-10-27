@@ -22736,7 +22736,7 @@
 	            'p',
 	            { style: pStyle },
 	            _react2.default.createElement('span', { style: spanStyle }),
-	            'Latest Posts'
+	            'Latests Posts'
 	          )
 	        ),
 	        _react2.default.createElement(
